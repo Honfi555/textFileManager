@@ -1,3 +1,4 @@
+# Auto genareted properies
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -37,4 +38,16 @@ build/
 ### Mac OS ###
 .DS_Store
 
+# Properties from .idea/.gitignore
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+
+# My properties
 .idea

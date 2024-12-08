@@ -1,0 +1,119 @@
+/* index.css */
+
+/* Устанавливаем высоту для html и body */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Оборачивающий контейнер */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh; /* Используем высоту окна браузера */
+}
+
+/* Левый панель */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Предотвращает выход контента за пределы блока */
+}
+
+/* Форма выбора файлов */
+#files_selector {
+    flex: 1; /* Заполняет все доступное пространство */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Добавляет прокрутку при переполнении */
+}
+
+/* Контейнер файлов */
+.file_container {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    flex-shrink: 0; /* Предотвращает сжатие при изменении размера */
+}
+
+/* Кнопки */
+.home-buttons {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.home-buttons:last-child {
+    margin-bottom: 0; /* Убирает отступ у последней кнопки */
+}
+
+.home-buttons:hover {
+    background-color: #0056b3;
+}
+
+/* Правый блок контента */
+#content_view_area {
+    flex: 1; /* Заполняет оставшееся пространство */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+
+    label {
+        flex: 1;
+        display: flex;
+    }
+}
+
+#file_content {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 14px;
+    overflow: auto;
+    background: #ffffff;
+}
+
+.file_container.selected {
+    background-color: #cce5ff;
+    border-color: #004085;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-panel, #content_view_area {
+        width: 100%;
+        height: auto;
+    }
+    .home-buttons {
+        flex: 1;
+        margin-right: 10px;
+    }
+    .home-buttons:last-child {
+        margin-right: 0;
+    }
+}

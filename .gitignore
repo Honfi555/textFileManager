@@ -51,3 +51,5 @@ build/
 
 # My properties
 .idea
+/src/main/resources/Фантастика/last_breath.html
+/src/main/resources/Проза/yellow_triangle.html

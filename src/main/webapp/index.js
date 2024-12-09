@@ -4,16 +4,18 @@ const fileContentDiv = document.getElementById('file_content');
 
 fileContainers.forEach(container => {
     container.addEventListener('click', () => {
+        // Снимаем выделение со всех
         fileContainers.forEach(fc => fc.classList.remove('selected'));
+        // Выделяем текущий
         container.classList.add('selected');
 
         const fileName = container.getAttribute('data-filename');
-        console.log(fileName);
+        const groupName = container.getAttribute('data-group');
 
-        fetch(`GetGospelContentServlet?fileName=${fileName}`)
+        // Выполняем запрос к сервлету с указанием группы и имени файла
+        fetch(`GetCompositionContentServlet?groupName=${encodeURIComponent(groupName)}&fileName=${encodeURIComponent(fileName)}`)
             .then(response => response.text())
             .then(content => {
-                // Вместо текстовой вставки используем innerHTML
                 fileContentDiv.innerHTML = content;
             })
             .catch(error => {

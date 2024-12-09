@@ -34,7 +34,6 @@
   <build>
     <finalName>textFileManager</finalName>
     <plugins>
-      <!-- Плагин для сборки WAR -->
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.2</version>

@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.textFileManager.CompositionInfo" %>
+<%@ page import="com.textFileManager.CompositionManager" %>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,21 +14,31 @@
 <body>
     <div class="container">
         <div class="left-panel">
-            <%@ page import="java.util.List" %>
-            <%@ page import="com.textFileManager.GospelInfo" %>
-            <%@ page import="com.textFileManager.GospelsManager" %>
-
             <%
-                GospelsManager manager = new GospelsManager();
-                List<GospelInfo> gospelsInfo = manager.getGospelsInfo();
+                CompositionManager manager = new CompositionManager();
+                Map<String, List<CompositionInfo>> allGroups = manager.getAllGroupsAndCompositions();
             %>
 
             <form id="files_selector">
                 <%
-                    for (GospelInfo info : gospelsInfo) {
+                    // Перебираем группы
+                    for (Map.Entry<String, List<CompositionInfo>> entry : allGroups.entrySet()) {
+                        String groupName = entry.getKey();
+                        List<CompositionInfo> compositions = entry.getValue();
                 %>
-                    <div class="file_container" data-filename="<%= info.getFileName() %>">
-                        <%= info.getDisplayName() %>
+                    <div class="group_container">
+                        <div class="group_name"><%= groupName %></div>
+                        <div class="compositions">
+                            <%
+                                for (CompositionInfo info : compositions) {
+                            %>
+                                <div class="file_container" data-group="<%= groupName %>" data-filename="<%= info.getFileName() %>">
+                                    <%= info.getDisplayName() %>
+                                </div>
+                            <%
+                                }
+                            %>
+                        </div>
                     </div>
                 <%
                     }
@@ -37,6 +51,5 @@
     </div>
 
     <script src="index.js"></script>
-
 </body>
 </html>
